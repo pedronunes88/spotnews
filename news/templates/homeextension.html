@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Página Inicial{% endblock %}
+{% block content %}
+  <header class="header">
+    <ul class="header-links">
+      <li><a href="{% url 'home-page' %}">Home</a></li>
+      <li><a href="{% url 'home-extension-page' %}">Home Extension</a></li>
+    </ul>
+  </header>
+  <main class="main">
+    <h1>Notícias</h1>
+    <ul class="news">
+      {% for news in news_list %}
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.content }}</p>
+        <span class="news-date">{{ news.created_at|date:"d/m/y" }}</span>
+        <img src="{% static 'news/images/'|add:news.image %}" alt="{{ news.title }}" class="news-image">
+         
+      {% endfor %}
+    </ul>
+{% endblock %}
