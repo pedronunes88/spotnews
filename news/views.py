@@ -6,4 +6,4 @@ from .models import News
 
 def news_home(request):
     news = News.objects.all()
-    return render(request, "news_home.html", {"news": news})
+    return render(request, "home.html", {"news": news})
