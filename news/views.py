@@ -37,9 +37,6 @@ def categories_form(request):
     return render(request, "categories_form.html", general)
 
 
-from .models import Author
-
-
 def news_form(request):
     clear_form = NewsForm()
     if request.method == "POST":

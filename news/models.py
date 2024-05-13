@@ -45,7 +45,7 @@ class News(models.Model):
     )
     content = models.TextField(null=False, blank=False)
     author = models.ForeignKey(
-        Author,
+        User,
         on_delete=models.CASCADE,
         related_name="news",  # aqui é o relacionamento com o modelo User
         null=False,

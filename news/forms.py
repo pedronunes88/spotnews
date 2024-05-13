@@ -1,12 +1,12 @@
 from django import forms
-from .models import Category, News, Author
+from .models import Category, News
 
 
 class CategoryForm(forms.Form):
     name = forms.CharField(max_length=200)
 
 
-from .models import Author, Category
+from .models import Category
 
 
 from django import forms
