@@ -28,14 +28,6 @@ def validate_title(value):
         raise ValidationError("O título deve conter pelo menos 2 palavras.")
 
 
-class Author(models.Model):
-    name = models.CharField(max_length=100)
-    # Outros campos do autor, se necessário
-
-    def __str__(self):
-        return self.name
-
-
 class News(models.Model):
     title = models.CharField(
         max_length=200,
