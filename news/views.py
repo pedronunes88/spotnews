@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import News, Category
-from .forms import CategoryForm
+from .models import News, Category, User
+from .forms import CategoryForm, NewsForm
 
 # Create your views here.
 
@@ -35,3 +35,25 @@ def categories_form(request):
     # pra ver o formulário ser exibido no template
     general = {"form": clear_form}
     return render(request, "categories_form.html", general)
+
+
+from .models import Author
+
+
+def news_form(request):
+    clear_form = NewsForm()
+    if request.method == "POST":
+        clear_form = NewsForm(request.POST, request.FILES)
+        if clear_form.is_valid():
+            clear_form.save()
+        return redirect("home-page")
+    else:
+        clear_form = NewsForm()
+        users = User.objects.all()
+        categories = Category.objects.all()
+        general = {
+            "form": clear_form,
+            "users": users,
+            "categories": categories,
+        }
+        return render(request, "news_form.html", general)
